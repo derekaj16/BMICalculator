@@ -1,0 +1,190 @@
+<!--
+
+Derek Johnson
+
+Section 4
+
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>BMI Fitness Calculator</title>
+
+    <style>
+        /* Making my webage look all sexy and stuff */
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: rgb(35,37,41);
+            width: 100%;
+            justify-content: center;
+        }
+        .main-content {
+            justify-content: center;
+            padding: 50px;
+            width: 25%;
+            margin: 0 auto;
+            
+        }
+        .calculation {
+            margin: 0 auto;
+        }
+        h1 {
+            padding: 40px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: rgb(55,58,74);
+            color: white;
+            margin: 0 auto 10px auto;
+            text-align: center;
+        }
+        p {
+            padding: 25px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: rgb(55,58,74);
+            color: white;
+            font-size: 24px; 
+            margin: 0 auto;
+            text-align: center;
+            display: block;
+            margin: 10px auto;
+        }
+        button {
+            padding: 25px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: rgb(110,155,248);
+            color: white;
+            font-size: 24px; 
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            display: block;
+            margin: 10px auto;
+        }
+        button:hover {
+            background-color: rgb(92,133,211);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="main-content">
+        <h1>BMI Calculator</h1>
+        <div class="caluclation">
+            <p id="result">---</p>
+            <button onclick="runBMI()">Calculate my BMI</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function runBMI() {
+            var feet;
+            var inches;
+            var weight;
+            var BMI;
+            var result;
+            
+            // Get the height of the person in feet
+            feet = prompt('Please enter your height.\n\nFeet:', 'ex. 5');
+
+            // Check if they want to exit the BMI calculator
+            if (feet == null) {
+                return;
+            }
+            while (isNaN(feet) == true) {
+                feet = prompt('Please enter a valid number', 'ex. 5');
+                // Check if they want to exit the BMI calculator
+                if (feet == null) {
+                    return;
+                }
+            }
+            while (feet < 0) {
+                feet = prompt('Please enter your height.\n\nFeet:', 'ex. 5');
+                // Check if they want to exit the BMI calculator
+                if (feet == null) {
+                    return;
+                }
+            }
+            
+            // Get the height of the person in inches
+            inches = prompt('Please enter your height.\n\nInches', 'ex. 8');
+
+            // Check if they want to exit the BMI calculator
+            if (inches == null) {
+                return;
+            }
+            while (isNaN(inches) == true) {
+                inches = prompt('Please enter a valid number', 'ex. 8');
+                // Check if they want to exit the BMI calculator
+                if (inches == null) {
+                    return;
+                }
+            }
+            while (inches < 0) {
+                inches = prompt('Please enter inches', 'ex. 8');
+                // Check if they want to exit the BMI calculator
+                if (inches == null) {
+                    return;
+                }
+            }
+            
+            // Get the weight of the person
+            weight = prompt('Please enter your weight in pounds', 'ex. 150');
+
+            // Check if they want to exit the BMI calculator
+            if (weight == null) {
+                return;
+            }
+            while (isNaN(weight) == true) {
+                weight = prompt('Please enter a valid number', 'ex. 150');
+                // Check if they want to exit the BMI calculator
+                if (weight == null) {
+                    return;
+                }
+            }
+            while (weight < 0) {
+                weight = prompt('Please enter a valid weight in pounds', 'ex. 150');
+                // Check if they want to exit the BMI calculator
+                if (weight == null) {
+                    return;
+                }
+            }
+            
+            
+
+            alert("You are currently " + calcBMI(feet,inches,weight) + "\n\nBMI: " + BMI.toFixed(2));
+            alert("Here are some tips for better health!\n\nMaintain a Healthy Weight\nIncrease Physical Activity\nEat a Heart-Healthy Diet\nKnow and Control Your Health Numbers");
+            
+            function calcBMI(feet,inches,weight) {
+                var totalInches = +feet*12 + +inches;
+                BMI = (weight/totalInches**2) * 703;
+                if (BMI < 18.5) {
+                    return "underweight";
+                } else if (BMI < 25) {
+                    return "a normal weight";
+                } else if (BMI < 30) {
+                    return "overweight";
+                } else {
+                    return "obese";
+                }
+            };
+
+            document.getElementById("result").innerHTML = BMI.toFixed(2);2
+
+            
+        };
+
+        
+        
+    </script>
+
+</body>
+
+</html>
